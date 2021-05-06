@@ -1,11 +1,13 @@
 import React from "react";
-
+import Container from "./../Container";
 const Header = () => {
   return (
     <header>
-      <h1>
-        Crypto Dashboard <span>by Toby Corradi</span>
-      </h1>
+      <Container>
+        <h1>
+          Crypto Dashboard <span>by Toby Corradi</span>
+        </h1>
+      </Container>
     </header>
   );
 };
