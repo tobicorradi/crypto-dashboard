@@ -1,11 +1,11 @@
-import React from 'react'
-
+import React from "react";
+import Header from "./components/Header";
 const App = () => {
-    return (
-        <div>
-            <h1>Crypto Dashboard <span>by Toby Corradi</span></h1>
-        </div>
-    )
-}
+  return (
+    <div>
+      <Header />
+    </div>
+  );
+};
 
-export default App
+export default App;
