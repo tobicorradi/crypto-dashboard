@@ -4,7 +4,7 @@ const $Button = $.button`
     background-color: white;
     padding: 8px 14px;
     box-shadow: var(--shadow);
-    margin-right: 5px;
+    margin-right: 14px;
     margin-top: 10px;
     cursor: pointer;
     border-radius: var(--radius);
