@@ -6,6 +6,7 @@ const $Button = $.button`
     box-shadow: var(--shadow);
     margin-right: 14px;
     margin-top: 10px;
+    margin-bottom: 10px;
     cursor: pointer;
     border-radius: var(--radius);
     ${({ currency, value }) =>

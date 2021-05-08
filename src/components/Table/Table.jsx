@@ -1,12 +1,15 @@
 import React from "react";
 import { ReactComponent as Star } from "./../../assets/icons/star.svg";
 import $ from "styled-components";
+
 const $Table = $.table`
     background-color: white;
     border-radius: var(--radius);
     box-shadow: var(--shadow);
     text-align: left;
     width: 70%;
+    border-spacing: 0;
+    border-collapse: collapse;
 `;
 const $Title = $.th`
     font-size: 16px;
@@ -23,6 +26,10 @@ const $Text = $.td`
       width: 104px;
     }
 `;
+const $Name = $.span`
+    font-weight: 400;
+    font-size: 17px;
+`;
 const $Row = $.tr`
     padding: 30px;
     :nth-child(even){
@@ -34,36 +41,40 @@ const $Image = $.img`
 `;
 const Table = ({ data, currency }) => {
   return (
-    <$Table>
-      <thead>
-        <$Row>
-          <th></th>
-          <$Title>Logo</$Title>
-          <$Title>Símbolo</$Title>
-          <$Title>Nombre</$Title>
-          <$Title>Cotización</$Title>
-          <$Title>Market Cap (24hs)</$Title>
-        </$Row>
-      </thead>
-      <tbody>
-        {data.map((el) => (
+    <>
+      <$Table>
+        <thead>
           <$Row>
-            <$Text>
-              <Star />
-            </$Text>
-            <$Text>
-              <$Image src={el.image} alt="" />
-            </$Text>
-            <$Text>{el.symbol.toUpperCase()}</$Text>
-            <$Text>{el.name}</$Text>
-            <$Text>
-              ${el.current_price.toFixed(2)} {currency.toUpperCase()}
-            </$Text>
-            <$Text>{el.market_cap_change_percentage_24h.toFixed(2)}</$Text>
+            <th></th>
+            <$Title>Logo</$Title>
+            <$Title>Símbolo</$Title>
+            <$Title>Nombre</$Title>
+            <$Title>Cotización</$Title>
+            <$Title>Market Cap (24hs)</$Title>
           </$Row>
-        ))}
-      </tbody>
-    </$Table>
+        </thead>
+        <tbody>
+          {data.map((el) => (
+            <$Row>
+              <$Text>
+                <Star />
+              </$Text>
+              <$Text>
+                <$Image src={el.image} alt="" />
+              </$Text>
+              <$Text>{el.symbol.toUpperCase()}</$Text>
+              <$Text>
+                <$Name>{el.name}</$Name>
+              </$Text>
+              <$Text>
+                ${el.current_price.toFixed(2)} {currency.toUpperCase()}
+              </$Text>
+              <$Text>{el.market_cap_change_percentage_24h.toFixed(2)}%</$Text>
+            </$Row>
+          ))}
+        </tbody>
+      </$Table>
+    </>
   );
 };
 
