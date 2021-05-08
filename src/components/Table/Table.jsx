@@ -23,7 +23,7 @@ const $Row = $.tr`
         background: var(--row-gray);
     }
 `;
-const Table = () => {
+const Table = ({data}) => {
   return (
     <$Table>
       <thead>
