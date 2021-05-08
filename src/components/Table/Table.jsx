@@ -23,7 +23,10 @@ const $Row = $.tr`
         background: var(--row-gray);
     }
 `;
-const Table = ({data}) => {
+const $Image = $.img`
+    width: 34px;
+`;
+const Table = ({ data }) => {
   return (
     <$Table>
       <thead>
@@ -37,16 +40,20 @@ const Table = ({data}) => {
         </$Row>
       </thead>
       <tbody>
-        <$Row>
-          <td>
-            <Star />
-          </td>
-          <$Text>Logo</$Text>
-          <$Text>BTC</$Text>
-          <$Text>Bitcoin</$Text>
-          <$Text>50.345usd</$Text>
-          <$Text>3.45%</$Text>
-        </$Row>
+        {data.map((el) => (
+          <$Row>
+            <td>
+              <Star />
+            </td>
+            <$Text>
+              <$Image src={el.image} alt="" />
+            </$Text>
+            <$Text>{el.symbol.toUpperCase()}</$Text>
+            <$Text>{el.name}</$Text>
+            <$Text>{el.current_price.toFixed(2)}</$Text>
+            <$Text>{el.market_cap_change_percentage_24h.toFixed(2)}</$Text>
+          </$Row>
+        ))}
       </tbody>
     </$Table>
   );
