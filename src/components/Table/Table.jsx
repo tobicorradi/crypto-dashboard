@@ -38,7 +38,7 @@ const Table = ({ data, currency }) => {
           <$Title>Símbolo</$Title>
           <$Title>Nombre</$Title>
           <$Title>Cotización</$Title>
-          <$Title>Variación</$Title>
+          <$Title>Market Cap (24hs)</$Title>
         </$Row>
       </thead>
       <tbody>
