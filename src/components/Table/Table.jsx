@@ -67,7 +67,7 @@ const Table = ({ data, currency }) => {
                 <$Name>{el.name}</$Name>
               </$Text>
               <$Text>
-                ${el.current_price.toFixed(2)} {currency.toUpperCase()}
+                ${el.current_price.toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")} {currency.toUpperCase()}
               </$Text>
               <$Text>{el.market_cap_change_percentage_24h.toFixed(2)}%</$Text>
             </$Row>
