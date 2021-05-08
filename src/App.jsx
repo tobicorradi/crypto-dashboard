@@ -4,6 +4,7 @@ import GlobalStyles from "./globalStyles";
 import CurrencyButton from "./components/CurrencyButton";
 import Container from "./components/Container";
 import Slider from "./components/Slider";
+import Table from "./components/Table";
 const App = () => {
   return (
     <>
@@ -14,6 +15,7 @@ const App = () => {
         <CurrencyButton text={"ARG"} />
         <CurrencyButton text={"BTC"} />
         <Slider />
+        <Table />
       </Container>
     </>
   );
