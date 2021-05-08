@@ -30,6 +30,9 @@ const $Name = $.span`
     font-weight: 400;
     font-size: 17px;
 `;
+const $Price = $.span`
+    font-size: 13px;
+`
 const $Row = $.tr`
     padding: 30px;
     :nth-child(even){
@@ -67,7 +70,7 @@ const Table = ({ data, currency }) => {
                 <$Name>{el.name}</$Name>
               </$Text>
               <$Text>
-                ${el.current_price.toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")} {currency.toUpperCase()}
+                ${el.current_price.toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")} <$Price>{currency.toUpperCase()}</$Price>
               </$Text>
               <$Text>{el.market_cap_change_percentage_24h.toFixed(2)}%</$Text>
             </$Row>
