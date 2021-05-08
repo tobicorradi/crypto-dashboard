@@ -18,6 +18,10 @@ const $Text = $.td`
     color: var(--blue);
     font-weight: bold;
     padding: 17px 0px;
+    &:first-child{
+      padding-left: 30px;
+      width: 104px;
+    }
 `;
 const $Row = $.tr`
     padding: 30px;
@@ -44,15 +48,17 @@ const Table = ({ data, currency }) => {
       <tbody>
         {data.map((el) => (
           <$Row>
-            <td>
+            <$Text>
               <Star />
-            </td>
+            </$Text>
             <$Text>
               <$Image src={el.image} alt="" />
             </$Text>
             <$Text>{el.symbol.toUpperCase()}</$Text>
             <$Text>{el.name}</$Text>
-            <$Text>${el.current_price.toFixed(2)} {currency.toUpperCase()}</$Text>
+            <$Text>
+              ${el.current_price.toFixed(2)} {currency.toUpperCase()}
+            </$Text>
             <$Text>{el.market_cap_change_percentage_24h.toFixed(2)}</$Text>
           </$Row>
         ))}

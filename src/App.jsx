@@ -9,10 +9,11 @@ import axios from "axios";
 const App = () => {
   const [market, setMarket] = useState([]);
   const [currency, setCurrency] = useState("usd");
+  const [favourite, setFavourite] = useState([]);
   useEffect(() => {
     axios
       .get(
-        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=market_cap_desc&per_page=30&page=1&sparkline=false`
+        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=market_cap_desc&per_page=15&page=1&sparkline=false`
       )
       .then((res) => {
         const data = res.data;
@@ -23,9 +24,9 @@ const App = () => {
   return (
     <>
       <GlobalStyles />
-      <p>{currency}</p>
       <Header />
       <Container>
+        <Slider />
         <CurrencyButton
           value={"usd"}
           currency={currency}
@@ -44,7 +45,6 @@ const App = () => {
           setCurrency={setCurrency}
           text={"BTC"}
         />
-        <Slider />
         <Table data={market} currency={currency} />
       </Container>
     </>
