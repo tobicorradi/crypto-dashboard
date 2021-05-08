@@ -1,29 +1,54 @@
 import React from "react";
 import { ReactComponent as Star } from "./../../assets/icons/star.svg";
+import $ from "styled-components";
+const $Table = $.table`
+    background-color: white;
+    border-radius: var(--radius);
+    width: 70%;
+    text-align: left;
+`;
+const $Title = $.th`
+    font-size: 16px;
+    color: var(--text-gray);
+    font-weight: 300;
+`;
+const $Text = $.td`
+    font-size: 17px;
+    color: var(--blue);
+    font-weight: bold;
+`;
+const $Row = $.tr`
+    padding: 30px;
+    :nth-child(even){
+        background: var(--row-gray);
+    }
+`;
 const Table = () => {
   return (
-    <table>
+    <$Table>
       <thead>
-        <tr>
+        <$Row>
           <th></th>
-          <th>Logo</th>
-          <th>Símbolo</th>
-          <th>Nombre</th>
-          <th>Cotización</th>
-          <th>Variación</th>
-        </tr>
+          <$Title>Logo</$Title>
+          <$Title>Símbolo</$Title>
+          <$Title>Nombre</$Title>
+          <$Title>Cotización</$Title>
+          <$Title>Variación</$Title>
+        </$Row>
       </thead>
       <tbody>
-        <tr>
-          <td><Star /></td>
-          <td>Logo</td>
-          <td>BTC</td>
-          <td>Bitocin</td>
-          <td>50.345usd</td>
-          <td>3.45%</td>
-        </tr>
+        <$Row>
+          <td>
+            <Star />
+          </td>
+          <$Text>Logo</$Text>
+          <$Text>BTC</$Text>
+          <$Text>Bitcoin</$Text>
+          <$Text>50.345usd</$Text>
+          <$Text>3.45%</$Text>
+        </$Row>
       </tbody>
-    </table>
+    </$Table>
   );
 };
 
