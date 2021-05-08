@@ -4,8 +4,9 @@ import $ from "styled-components";
 const $Table = $.table`
     background-color: white;
     border-radius: var(--radius);
-    width: 70%;
+    box-shadow: var(--shadow);
     text-align: left;
+    width: 70%;
 `;
 const $Title = $.th`
     font-size: 16px;
@@ -13,9 +14,10 @@ const $Title = $.th`
     font-weight: 300;
 `;
 const $Text = $.td`
-    font-size: 17px;
+    font-size: 18px;
     color: var(--blue);
     font-weight: bold;
+    padding: 17px 0px;
 `;
 const $Row = $.tr`
     padding: 30px;
@@ -26,7 +28,7 @@ const $Row = $.tr`
 const $Image = $.img`
     width: 34px;
 `;
-const Table = ({ data }) => {
+const Table = ({ data, currency }) => {
   return (
     <$Table>
       <thead>
@@ -50,7 +52,7 @@ const Table = ({ data }) => {
             </$Text>
             <$Text>{el.symbol.toUpperCase()}</$Text>
             <$Text>{el.name}</$Text>
-            <$Text>{el.current_price.toFixed(2)}</$Text>
+            <$Text>${el.current_price.toFixed(2)} {currency.toUpperCase()}</$Text>
             <$Text>{el.market_cap_change_percentage_24h.toFixed(2)}</$Text>
           </$Row>
         ))}

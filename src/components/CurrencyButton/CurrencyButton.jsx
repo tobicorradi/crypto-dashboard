@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import $ from "styled-components";
 const $Button = $.button`
     background-color: white;
@@ -14,9 +14,13 @@ const $Button = $.button`
         color: white;
         font-weight: 700;
     }
-`
-const CurrencyButton = ({ text, currency }) => {
-  return <$Button>{text}</$Button>;
+`;
+
+const CurrencyButton = ({ text, currency, value, setCurrency }) => {
+  const changeCurrency = (value) => {
+    setCurrency(value);
+  };
+  return <$Button onClick={() => changeCurrency(value)}>{text}</$Button>;
 };
 
 export default CurrencyButton;
