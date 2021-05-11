@@ -10,6 +10,7 @@ const $Table = $.table`
     width: 70%;
     border-spacing: 0;
     border-collapse: collapse;
+    margin-top: 15px;
 `;
 const $Title = $.th`
     font-size: 14px;
