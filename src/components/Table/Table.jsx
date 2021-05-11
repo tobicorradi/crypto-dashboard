@@ -12,9 +12,10 @@ const $Table = $.table`
     border-collapse: collapse;
 `;
 const $Title = $.th`
-    font-size: 16px;
+    font-size: 14px;
     color: var(--text-gray);
     font-weight: 300;
+    padding: 25px 0px;
 `;
 const $Text = $.td`
     font-size: 18px;
