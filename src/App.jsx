@@ -6,7 +6,7 @@ import Container from "./components/Container";
 import Slider from "./components/Slider";
 import Table from "./components/Table";
 import SearchBar from "./components/SearchBar";
-
+import FlexWrapper from "./components/FlexWrapper";
 import axios from "axios";
 const App = () => {
   const [market, setMarket] = useState([]);
@@ -29,25 +29,27 @@ const App = () => {
       <Header />
       <Container>
         <Slider />
-        <SearchBar />
-        <CurrencyButton
-          value={"usd"}
-          currency={currency}
-          setCurrency={setCurrency}
-          text={"USD"}
-        />
-        <CurrencyButton
-          value={"ars"}
-          currency={currency}
-          setCurrency={setCurrency}
-          text={"ARG"}
-        />
-        <CurrencyButton
-          value={"btc"}
-          currency={currency}
-          setCurrency={setCurrency}
-          text={"BTC"}
-        />
+        <FlexWrapper>
+          <SearchBar />
+          <CurrencyButton
+            value={"usd"}
+            currency={currency}
+            setCurrency={setCurrency}
+            text={"USD"}
+          />
+          <CurrencyButton
+            value={"ars"}
+            currency={currency}
+            setCurrency={setCurrency}
+            text={"ARG"}
+          />
+          <CurrencyButton
+            value={"btc"}
+            currency={currency}
+            setCurrency={setCurrency}
+            text={"BTC"}
+          />
+        </FlexWrapper>
         <Table data={market} currency={currency} />
       </Container>
     </>
