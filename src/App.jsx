@@ -5,6 +5,8 @@ import CurrencyButton from "./components/CurrencyButton";
 import Container from "./components/Container";
 import Slider from "./components/Slider";
 import Table from "./components/Table";
+import SearchBar from "./components/SearchBar";
+
 import axios from "axios";
 const App = () => {
   const [market, setMarket] = useState([]);
@@ -27,6 +29,7 @@ const App = () => {
       <Header />
       <Container>
         <Slider />
+        <SearchBar />
         <CurrencyButton
           value={"usd"}
           currency={currency}
