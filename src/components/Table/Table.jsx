@@ -45,6 +45,9 @@ const $Image = $.img`
     width: 34px;
 `;
 const Table = ({ data, currency }) => {
+  const addFavourite = (id, current_price) =>{
+    console.log('Favorito:', id, current_price)
+  }
   return (
     <>
       <$Table>
@@ -62,7 +65,7 @@ const Table = ({ data, currency }) => {
           {data.map((el) => (
             <$Row>
               <$Text>
-                <Star />
+                <Star onClick={() => addFavourite(el.id, el.current_price.toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"))}/>
               </$Text>
               <$Text>
                 <$Image src={el.image} alt="" />
