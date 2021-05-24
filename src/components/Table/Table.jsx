@@ -44,9 +44,14 @@ const $Row = $.tr`
 const $Image = $.img`
     width: 34px;
 `;
-const Table = ({ data, currency }) => {
+const Table = ({ data, currency, favourite, setFavourite }) => {
   const addFavourite = (id, current_price) =>{
-    console.log('Favorito:', id, current_price)
+    const favouriteItem = {
+        id: id,
+        price: current_price
+    }
+    setFavourite(favouriteItem)
+    console.log('El state favourite es' +favourite)
   }
   return (
     <>

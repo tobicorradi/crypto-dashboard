@@ -7,6 +7,7 @@ import Slider from "./components/Slider";
 import Table from "./components/Table";
 import SearchBar from "./components/SearchBar";
 import FlexWrapper from "./components/FlexWrapper";
+import Favourites from "./components/Favourites";
 import axios from "axios";
 const App = () => {
   const [market, setMarket] = useState([]);
@@ -28,7 +29,7 @@ const App = () => {
       <GlobalStyles />
       <Header />
       <Container>
-        <Slider />
+       {/* <Slider />  */}
         <FlexWrapper>
           <SearchBar />
           <CurrencyButton
@@ -50,7 +51,7 @@ const App = () => {
             text={"BTC"}
           />
         </FlexWrapper>
-        <Table data={market} currency={currency} />
+        <Table favourite={favourite} setFavourite={setFavourite} data={market} currency={currency} />
       </Container>
     </>
   );
