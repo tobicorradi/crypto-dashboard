@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Header from "./components/Header";
 import GlobalStyles from "./globalStyles";
 import CurrencyButton from "./components/CurrencyButton";
@@ -9,49 +9,47 @@ import SearchBar from "./components/SearchBar";
 import FlexWrapper from "./components/FlexWrapper";
 import Favourites from "./components/Favourites";
 import axios from "axios";
+import { StoreContext } from "./utils/store";
 const App = () => {
-  const [market, setMarket] = useState([]);
-  const [currency, setCurrency] = useState("usd");
-  const [favourite, setFavourite] = useState([]);
+  
+  const {currencies, loadings, markets} = useContext(StoreContext)
+  const [currency, setCurrency] = currencies
+  const [loading, setLoading] = loadings
+  const [market, setMarket] = markets
+  
+  const apiUrl = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=market_cap_desc&per_page=15&page=1&sparkline=false`
+
   useEffect(() => {
+    setLoading(true)
     axios
-      .get(
-        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=market_cap_desc&per_page=15&page=1&sparkline=false`
-      )
+      .get(apiUrl)
       .then((res) => {
         const data = res.data;
+        setLoading(false)
         setMarket(data);
       });
   }, [currency]);
-  console.log(market);
   return (
     <>
       <GlobalStyles />
       <Header />
       <Container>
-       {/* <Slider />  */}
         <FlexWrapper>
           <SearchBar />
           <CurrencyButton
             value={"usd"}
-            currency={currency}
-            setCurrency={setCurrency}
             text={"USD"}
           />
           <CurrencyButton
             value={"ars"}
-            currency={currency}
-            setCurrency={setCurrency}
             text={"ARG"}
           />
           <CurrencyButton
             value={"btc"}
-            currency={currency}
-            setCurrency={setCurrency}
             text={"BTC"}
           />
         </FlexWrapper>
-        <Table favourite={favourite} setFavourite={setFavourite} data={market} currency={currency} />
+        <Table data={market}/>
       </Container>
     </>
   );

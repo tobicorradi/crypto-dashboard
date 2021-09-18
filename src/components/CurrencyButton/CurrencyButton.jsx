@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import $ from "styled-components";
+import { StoreContext } from "../../utils/store";
 const $Button = $.button`
     background-color: white;
     padding: 8px 14px;
@@ -21,7 +22,9 @@ const $Button = $.button`
     }
 `;
 
-const CurrencyButton = ({ text, currency, value, setCurrency }) => {
+const CurrencyButton = ({ text, value}) => {
+  const {currencies} = React.useContext(StoreContext)
+  const [currency, setCurrency] = currencies
   const changeCurrency = (value) => {
     setCurrency(value);
   };

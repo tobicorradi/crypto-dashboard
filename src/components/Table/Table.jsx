@@ -1,11 +1,12 @@
-import React from "react";
+import React, {useContext} from "react";
 import { ReactComponent as Star } from "./../../assets/icons/star.svg";
 import $ from "styled-components";
-
+import {StoreContext} from '../../utils/store.js'
 const $Table = $.table`
     background-color: white;
     border-radius: var(--radius);
     box-shadow: var(--shadow);
+    table-layout:fixed;
     text-align: left;
     width: 70%;
     border-spacing: 0;
@@ -44,14 +45,18 @@ const $Row = $.tr`
 const $Image = $.img`
     width: 34px;
 `;
-const Table = ({ data, currency, favourite, setFavourite }) => {
+const Table = ({data}) => {
+  const {loadings, markets, currencies, favourites} = useContext(StoreContext)
+  const [loading, setLoading] = loadings
+  const [currency, setCurrency] = currencies
+  const [favourite, setFavourite] = favourites
+
   const addFavourite = (id, current_price) =>{
     const favouriteItem = {
         id: id,
         price: current_price
     }
     setFavourite(favouriteItem)
-    console.log('El state favourite es' +favourite)
   }
   return (
     <>
@@ -80,7 +85,12 @@ const Table = ({ data, currency, favourite, setFavourite }) => {
                 <$Name>{el.name}</$Name>
               </$Text>
               <$Text>
-                ${el.current_price.toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")} <$Price>{currency.toUpperCase()}</$Price>
+                {loading === true ?
+                  <p>Cargando</p>
+                : 
+                  el.current_price.toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") 
+                }
+                <$Price>{currency.toUpperCase()}</$Price>
               </$Text>
               <$Text>{el.market_cap_change_percentage_24h.toFixed(2)}%</$Text>
             </$Row>
