@@ -24,6 +24,12 @@ const $Text = $.td`
     color: var(--blue);
     font-weight: bold;
     padding: 17px 0px;
+    &.text-green{
+      color: green;
+    }
+    &.text-red{
+      color: #d12424;
+    }
     &:first-child{
       padding-left: 30px;
       width: 104px;
@@ -94,7 +100,7 @@ const Table = ({data}) => {
                   {el.current_price.toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") }
                 <$Price>{currency.toUpperCase()}</$Price>
               </$Text>
-              <$Text>{el.market_cap_change_percentage_24h.toFixed(2)}%</$Text> 
+              <$Text className={el.market_cap_change_percentage_24h.toFixed(2) > 0 ? 'text-green' : 'text-red'}>{el.market_cap_change_percentage_24h.toFixed(2)}%</$Text> 
               </>
               }
             </$Row>
