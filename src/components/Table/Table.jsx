@@ -8,7 +8,7 @@ const $Table = $.table`
     box-shadow: var(--shadow);
     table-layout:fixed;
     text-align: left;
-    width: 70%;
+    width: 100%;
     border-spacing: 0;
     border-collapse: collapse;
     margin-top: 15px;
@@ -84,15 +84,19 @@ const Table = ({data}) => {
               <$Text>
                 <$Name>{el.name}</$Name>
               </$Text>
+              {loading ? 
+              <>
+               <p>Cargando</p>
+              </>
+              :
+              <>
               <$Text>
-                {loading === true ?
-                  <p>Cargando</p>
-                : 
-                  el.current_price.toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") 
-                }
+                  {el.current_price.toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") }
                 <$Price>{currency.toUpperCase()}</$Price>
               </$Text>
-              <$Text>{el.market_cap_change_percentage_24h.toFixed(2)}%</$Text>
+              <$Text>{el.market_cap_change_percentage_24h.toFixed(2)}%</$Text> 
+              </>
+              }
             </$Row>
           ))}
         </tbody>
